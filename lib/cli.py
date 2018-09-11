@@ -658,13 +658,13 @@ class TrainArgs(FaceSwapArgs):
                               "dest": "redirect_gui",
                               "default": False,
                               "help": argparse.SUPPRESS})
-        argument_list.append({"opts": ("-alc", "--alt-learning-count", ),
+        argument_list.append({"opts": ("--alt-learning-count", ),
                               "action": FileFullPaths,
                               "filetypes": 'alignments',
                               "type": str,
                               "dest": "alt_learning_count",
                               "help": "Optional path to an Alt Learning Count."})
-        argument_list.append({"opts": ("-alp", "--alt-learning-preview", ),
+        argument_list.append({"opts": ("--alt-learning-preview", ),
                               "action": FileFullPaths,
                               "filetypes": 'alignments',
                               "type": str,
