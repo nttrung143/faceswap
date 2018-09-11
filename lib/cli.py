@@ -370,18 +370,6 @@ class ExtractConvertArgs(FaceSwapArgs):
                               "dest": "verbose",
                               "default": False,
                               "help": "Show verbose output"})
-        argument_list.append({"opts": ("-alc", "--alt-learning-count", ),
-                              "action": FileFullPaths,
-                              "filetypes": 'alignments',
-                              "type": str,
-                              "dest": "alt_learning_count",
-                              "help": "Optional path to an Alt Learning Count."})
-        argument_list.append({"opts": ("-alp", "--alt-learning-preview", ),
-                              "action": FileFullPaths,
-                              "filetypes": 'alignments',
-                              "type": str,
-                              "dest": "alt_learning_preview",
-                              "help": "Optional path to an Alt Learning Preview."})
         return argument_list
 
 
@@ -670,6 +658,18 @@ class TrainArgs(FaceSwapArgs):
                               "dest": "redirect_gui",
                               "default": False,
                               "help": argparse.SUPPRESS})
+        argument_list.append({"opts": ("-alc", "--alt-learning-count", ),
+                              "action": FileFullPaths,
+                              "filetypes": 'alignments',
+                              "type": str,
+                              "dest": "alt_learning_count",
+                              "help": "Optional path to an Alt Learning Count."})
+        argument_list.append({"opts": ("-alp", "--alt-learning-preview", ),
+                              "action": FileFullPaths,
+                              "filetypes": 'alignments',
+                              "type": str,
+                              "dest": "alt_learning_preview",
+                              "help": "Optional path to an Alt Learning Preview."})
         return argument_list
 
 
