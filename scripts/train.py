@@ -119,7 +119,7 @@ class Train(object):
     def run_training_cycle(self, model, trainer):
         """ Perform the training cycle """
         for iteration in range(0, self.args.iterations):
-            if hasattr(seld.args, "alt_learning_count"):
+            if hasattr(self.args, "alt_learning_count"):
                 with open(self.args.alt_learning_count, "a+") as myfile:
                     myfile.write('{}\n'.format(iteration))
             save_iteration = iteration % self.args.save_interval == 0
@@ -145,7 +145,7 @@ class Train(object):
             try:
                 with self.lock:
                     for name, image in self.preview_buffer.items():
-                        if hasattr(seld.args, "alt_learning_preview"):
+                        if hasattr(self.args, "alt_learning_preview"):
                             cv2.imwrite(self.args.alt_learning_preview, image)
                         else:
                             cv2.imshow(name, image)
