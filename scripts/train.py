@@ -119,6 +119,9 @@ class Train(object):
     def run_training_cycle(self, model, trainer):
         """ Perform the training cycle """
         for iteration in range(0, self.args.iterations):
+            if self.args.alt_learning_count is not None:
+                with open(self.args.alt_learning_count, "a+") as myfile:
+                    myfile.write('{}\n'.format(iteration))
             save_iteration = iteration % self.args.save_interval == 0
             viewer = self.show if save_iteration or self.save_now else None
             trainer.train_one_step(iteration, viewer)
@@ -142,7 +145,10 @@ class Train(object):
             try:
                 with self.lock:
                     for name, image in self.preview_buffer.items():
-                        cv2.imshow(name, image)
+                        if self.args.alt_learning_preview is not None:
+                            cv2.imwrite(self.args.alt_learning_preview, image)
+                        else:
+                            cv2.imshow(name, image)
 
                 key = cv2.waitKey(1000)
                 if key == ord("\n") or key == ord("\r"):
