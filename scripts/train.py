@@ -145,7 +145,7 @@ class Train(object):
             try:
                 with self.lock:
                     for name, image in self.preview_buffer.items():
-                        if if hasattr(seld.args, "alt_learning_preview"):
+                        if hasattr(seld.args, "alt_learning_preview"):
                             cv2.imwrite(self.args.alt_learning_preview, image)
                         else:
                             cv2.imshow(name, image)
