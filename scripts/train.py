@@ -144,6 +144,7 @@ class Train(object):
               "immediately")
         while True:
             try:
+                time.sleep(5) # reduce saving images
                 with self.lock:
                     count = 0
                     for name, image in self.preview_buffer.items():
