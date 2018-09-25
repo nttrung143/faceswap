@@ -144,13 +144,15 @@ class Train(object):
               "immediately")
         while True:
             try:
+                time.sleep(3) # reduce saving images
                 with self.lock:
+                    count = 0
                     for name, image in self.preview_buffer.items():
-                        print("monitor_preivew: %s" % name)
+                        count = count + 1
                         if self.args.alt_learning_preview is not None:
                             small = cv2.resize(image, (0,0), fx=0.5, fy=0.5)
-                            cv2.imwrite("%s/preview_%d.png" % (self.args.alt_learning_preview, int(time.time())), small)
-                            time.sleep(3) # reduce saving images
+                            filename = "%s/preview_%d_%d.png" % (self.args.alt_learning_preview, int(time.time()), count)
+                            cv2.imwrite(filename, small)
                         else:
                             cv2.imshow(name, image)
 
