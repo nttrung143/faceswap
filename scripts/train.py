@@ -120,7 +120,7 @@ class Train(object):
         """ Perform the training cycle """
         for iteration in range(0, self.args.iterations):
             if self.args.alt_learning_count is not None:
-                with open(self.args.alt_learning_count, "a+") as myfile:
+                with open(self.args.alt_learning_count, "w+") as myfile:
                     myfile.write('{}\n'.format(iteration))
             save_iteration = iteration % self.args.save_interval == 0
             viewer = self.show if save_iteration or self.save_now else None
