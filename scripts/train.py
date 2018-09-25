@@ -149,6 +149,7 @@ class Train(object):
                         if self.args.alt_learning_preview is not None:
                             small = cv2.resize(image, (0,0), fx=0.5, fy=0.5)
                             cv2.imwrite("%s/preview_%d.png" % (self.args.alt_learning_preview, int(time.time())), small)
+                            time.sleep(3) # reduce saving images
                         else:
                             cv2.imshow(name, image)
 
