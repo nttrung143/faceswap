@@ -146,7 +146,8 @@ class Train(object):
                 with self.lock:
                     for name, image in self.preview_buffer.items():
                         if self.args.alt_learning_preview is not None:
-                            cv2.imwrite(self.args.alt_learning_preview, image)
+                            small = cv2.resize(image, (0,0), fx=0.5, fy=0.5)
+                            cv2.imwrite(self.args.alt_learning_preview, small)
                         else:
                             cv2.imshow(name, image)
 
