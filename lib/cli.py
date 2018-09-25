@@ -665,9 +665,7 @@ class TrainArgs(FaceSwapArgs):
                               "dest": "alt_learning_count",
                               "help": "Optional path to an Alt Learning Count."})
         argument_list.append({"opts": ("--alt-learning-preview", ),
-                              "action": FileFullPaths,
-                              "filetypes": 'alignments',
-                              "type": str,
+                              "action": DirFullPaths,
                               "dest": "alt_learning_preview",
                               "help": "Optional path to an Alt Learning Preview."})
         return argument_list

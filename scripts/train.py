@@ -12,6 +12,7 @@ from keras.backend.tensorflow_backend import set_session
 from lib.utils import get_folder, get_image_paths, set_system_verbosity
 from plugins.PluginLoader import PluginLoader
 
+import time
 
 class Train(object):
     """ The training process.  """
@@ -147,7 +148,7 @@ class Train(object):
                     for name, image in self.preview_buffer.items():
                         if self.args.alt_learning_preview is not None:
                             small = cv2.resize(image, (0,0), fx=0.5, fy=0.5)
-                            cv2.imwrite(self.args.alt_learning_preview, small)
+                            cv2.imwrite("%s/preview_%d.png" % (self.args.alt_learning_preview, int(time.time())), small)
                         else:
                             cv2.imshow(name, image)
 
